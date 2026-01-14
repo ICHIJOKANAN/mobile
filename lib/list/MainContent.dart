@@ -6,47 +6,58 @@ class MainContent extends StatelessWidget{
   const MainContent(this.onPressed, {super.key});
  
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    body: Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          ElevatedButton(
-            onPressed: (){
-            // （1） 指定した画面に遷移する
-            Navigator.push(context, MaterialPageRoute(
-              // （2） 実際に表示するページ(ウィジェット)を指定する
-              builder: (context) => ()
-            ));
-          },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.red,
-              foregroundColor: Colors.white,
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+      
+ 
+     
+        SizedBox(
+          height: 20,
+          child: Padding(
+            padding: EdgeInsets.symmetric( horizontal: 5, vertical: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: onPressed ?? () {},
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all<Color>(Colors.red),
+                    foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                    shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                        side: BorderSide(color: Colors.red)
+                      )
+                    )
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(2),
+                    child: FittedBox(
+                      fit: BoxFit.contain,
+                      child: Text("出費"),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 5),
+                  child: FittedBox(
+                    fit: BoxFit.fitHeight,
+                    child: Text("2021/07/21",
+                      style: TextStyle(
+                          color: Colors.black,
+                          decoration: TextDecoration.none,
+                          fontWeight: FontWeight.normal
+                      ),
+                    ),
+                  )
+                )
+              ],
             ),
-            child: Text("出費"),
           ),
-
-          SizedBox(width: 20), // ボタン間のすき間
-
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => IncomePage()),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue,
-              foregroundColor: Colors.white,
-            ),
-            child: Text("収入"),
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
+        )
+      ],
+    );
+  }
 }
  
