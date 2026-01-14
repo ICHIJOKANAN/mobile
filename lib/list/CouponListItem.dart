@@ -86,4 +86,3 @@ class CouponListItem extends StatelessWidget {
     );
   }
 }
- 
