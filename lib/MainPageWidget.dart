@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'list/Maincontent.dart'; 
 
 class MainPageWidget extends StatefulWidget{
 
@@ -8,6 +9,7 @@ class MainPageWidget extends StatefulWidget{
   }
 
 }
+
 
 class _MainPageWidget extends State<MainPageWidget>{
 
@@ -29,15 +31,10 @@ class _MainPageWidget extends State<MainPageWidget>{
   }
 */
   @override
-  Widget build(BuildContext context) {
-    /*return Stack(
-      children: [
-        CouponListView(openDetail),
-        if (_isSelectedItem)
-          CouponDetail(closeDetail)
-      ],
-    );*/
-    return const SizedBox(); 
-  }
+Widget build(BuildContext context) {
+  return MainContent(() {
+    // ボタン押下時の処理
+  });
+}
   
 }

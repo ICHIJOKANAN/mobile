@@ -9,27 +9,7 @@ class MainContent extends StatelessWidget{
 Widget build(BuildContext context) {
   return Column(
     children: [
-      SizedBox(
-        height: 20,
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: EdgeInsets.all(2),
-            child: FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-                "タイトル",
-                style: TextStyle(
-                  color: Colors.black,
-                  decoration: TextDecoration.none,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ),
-
+      
       SizedBox(
         height: 20,
         child: Padding(
