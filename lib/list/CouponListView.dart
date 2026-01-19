@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:sample/list/CouponListItem.dart';
  
@@ -13,7 +14,7 @@ class CouponListView extends StatelessWidget{
         child: listViewBuilder()
     );
   }
- 
+  
   Widget buildListView(){
     return ListView(
       children: [
@@ -26,7 +27,7 @@ class CouponListView extends StatelessWidget{
  
  
   //  データの個数に従って、表示する場合
-  static const items = [0,1,2,3,4,5,6];
+  static const items = [0];
  
   Widget listViewBuilder(){
     return ListView.builder(
@@ -36,4 +37,6 @@ class CouponListView extends StatelessWidget{
         }
     );
   }
+
 }
+
