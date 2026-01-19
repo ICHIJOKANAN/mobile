@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sample/MainPageWidget.dart';
-import 'package:sample/list/CouponListView.dart';
 import 'MainPageWidget.dart';
 
 
