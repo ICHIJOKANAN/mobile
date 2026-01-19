@@ -11,7 +11,8 @@ Widget build(BuildContext context) {
     children: [
       
       SizedBox(
-        height: 20,
+        height: 520,
+        width: 300,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
           child: Row(
