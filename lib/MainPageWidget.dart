@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'list/Maincontent.dart'; 
+import 'list/MainContent.dart'; 
+import 'list/ExpensePage.dart';
+import 'list/IncomePage.dart';
+
 
 class MainPageWidget extends StatefulWidget{
 
@@ -30,11 +33,29 @@ class _MainPageWidget extends State<MainPageWidget>{
     });
   }
 */
-  @override
+
+
+@override
 Widget build(BuildContext context) {
-  return MainContent(() {
-    // ボタン押下時の処理
-  });
+  return MainContent(
+    onExpense: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ExpensePage(),
+        ),
+      );
+    },
+    onIncome: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const IncomePage(),
+        ),
+      );
+    },
+  );
 }
+
   
 }

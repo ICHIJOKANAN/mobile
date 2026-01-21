@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
  
 class MainContent extends StatelessWidget{
  
-  final VoidCallback? onPressed;
-  const MainContent(this.onPressed, {super.key});
+final VoidCallback onExpense;
+final VoidCallback onIncome;
+const MainContent({
+  required this.onExpense,
+  required this.onIncome,
+  super.key,
+});
  
  @override
 Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ Widget build(BuildContext context) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ElevatedButton(
-                onPressed: onPressed ?? () {},
+                onPressed: onExpense,
                 style: ButtonStyle(
                   backgroundColor:
                       WidgetStateProperty.all<Color>(Colors.red),
@@ -59,7 +64,7 @@ Widget build(BuildContext context) {
 
               // 収入ボタン
               ElevatedButton(
-                onPressed: onPressed ?? () {},
+                onPressed: onIncome,
                 style: ButtonStyle(
                   backgroundColor:
                       WidgetStateProperty.all<Color>(Colors.blue),
