@@ -9,8 +9,22 @@ class MainContent extends StatelessWidget{
 Widget build(BuildContext context) {
   return Column(
     children: [
-      
+      // タイトル
+      Padding(
+        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        child: Center(
+          child: Text(
+            "家計簿アプリ",
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
       SizedBox(
+        
+        // 出費ボタン
         height: 520,
         width: 300,
         child: Padding(
