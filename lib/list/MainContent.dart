@@ -22,8 +22,9 @@ Widget build(BuildContext context) {
           ),
         ),
       ),
+
+      
       SizedBox(
-        
         // 出費ボタン
         height: 520,
         width: 300,
@@ -51,6 +52,7 @@ Widget build(BuildContext context) {
                   child: FittedBox(
                     fit: BoxFit.contain,
                     child: Text("出費"),
+                    
                   ),
                 ),
               ),
