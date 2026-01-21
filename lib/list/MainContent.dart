@@ -16,13 +16,14 @@ Widget build(BuildContext context) {
     children: [
       // タイトル
       Padding(
-        padding: const EdgeInsets.only(top: 20, bottom: 20),
+        padding: const EdgeInsets.only(top: 60, bottom: 20),
         child: Center(
           child: Text(
             "家計簿アプリ",
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 34,
               fontWeight: FontWeight.bold,
+              color: Colors.black,
             ),
           ),
         ),
@@ -31,7 +32,7 @@ Widget build(BuildContext context) {
       
       SizedBox(
         // 出費ボタン
-        height: 520,
+        height: 430,//430で統一
         width: 300,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
