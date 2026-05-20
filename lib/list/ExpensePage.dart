@@ -16,7 +16,14 @@ class _ExpensePageState extends State<ExpensePage> {
 
   final TextEditingController moneyController =
       TextEditingController();
-    
+  final List<String> categories = [
+    '食費',
+    '生活費',
+    '交通費',
+    '娯楽費',
+    '固定費',
+  ];
+  String selectedCategory = '食費';
 
   @override
   //画面をどう表示するかを書く
@@ -54,13 +61,52 @@ class _ExpensePageState extends State<ExpensePage> {
               ),
             ),
 
+
+            //高さ20pxの余白を入れる
+            const SizedBox(height: 20),
+
+
+            //プルダウン形式の入力フォームを作成
+            DropdownButtonFormField<String>(
+
+              /*現在選択されている値
+              selectedCategoryに入ってる値が表示される*/
+              value: selectedCategory,
+
+              //入力フォームの見た目の設定
+              decoration: const InputDecoration(
+                //フォームのラベル(タイトル)
+                labelText: 'カテゴリ',
+                //枠線
+                border: OutlineInputBorder(),
+              ),
+              items: categories//プルダウンの選択肢一覧を作成
+              /*categoriesの中身を一つずつ取り出して、
+              DropdownMenuItemに変換する*/
+                  .map((category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(category),
+                      ))
+                  .toList(),//mpaはIterabel型だからList型に変換する
+              //選択肢が選ばれたときの処理
+              onChanged: (value) {
+                if (value != null) {
+                  //画面を更新する
+                  setState(() {
+                    //選択されたカテゴリの保持
+                    selectedCategory = value;
+                  });
+                }
+              },
+            ),
+
             const SizedBox(height: 20),
 
             ElevatedButton(
               onPressed: () {
               //ボタンを押したときの処理
 
-                print(moneyController.text);
+                print('金額: ${moneyController.text}, カテゴリ: $selectedCategory');
                 /*入力された値をコンソールに表示
                 今後は
                 入力
