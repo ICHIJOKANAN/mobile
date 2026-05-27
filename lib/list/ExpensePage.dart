@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../db/database_helper.dart';
+import '../models/record.dart';
 
 class ExpensePage extends StatefulWidget {
   const ExpensePage({super.key});
@@ -71,7 +73,7 @@ class _ExpensePageState extends State<ExpensePage> {
 
               /*現在選択されている値
               selectedCategoryに入ってる値が表示される*/
-              value: selectedCategory,
+              initialValue: selectedCategory,
 
               //入力フォームの見た目の設定
               decoration: const InputDecoration(
@@ -103,23 +105,32 @@ class _ExpensePageState extends State<ExpensePage> {
             const SizedBox(height: 20),
 
             ElevatedButton(
-              onPressed: () {
-              //ボタンを押したときの処理
+              onPressed: () async {
+                final amount = int.tryParse(moneyController.text);
+                if (amount == null || amount <= 0) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Text('正しい金額を入力してください')),
+                  );
+                  return;
+                }
 
-                print('金額: ${moneyController.text}, カテゴリ: $selectedCategory');
-                /*入力された値をコンソールに表示
-                今後は
-                入力
-                ↓
-                Listに保存
-                ↓
-                ListView表示
-                ↓
-                グラフ
-                */
+                final record = Record(
+                  amount: amount,
+                  category: selectedCategory,
+                  type: 'expense',
+                  date: DateTime.now(),
+                );
+                final messenger = ScaffoldMessenger.of(context);
+                final navigator = Navigator.of(context);
 
-                
+                await DatabaseHelper.instance.insertRecord(record);
+                if (!mounted) return;
 
+                messenger.showSnackBar(
+                  const SnackBar(content: Text('出費を保存しました')),
+                );
+
+                navigator.pop();
               },
 
               child: const Text("登録"),

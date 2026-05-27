@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sample/MainPageWidget.dart';
-import 'MainPageWidget.dart';
 
 
 
