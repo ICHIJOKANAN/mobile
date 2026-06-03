@@ -1,9 +1,9 @@
 class Record {
   int? id;
-  final int amount;
-  final String category;
-  final String type;
-  final DateTime date;
+  int amount;
+  String category;
+  String type; // 'income' or 'expense'
+  DateTime date;
 
   Record({
     this.id,
@@ -23,7 +23,7 @@ class Record {
     };
   }
 
-  factory Record.fromMap(Map<String, dynamic> map) {
+  static Record fromMap(Map<String, dynamic> map) {
     return Record(
       id: map['id'] as int?,
       amount: map['amount'] as int,

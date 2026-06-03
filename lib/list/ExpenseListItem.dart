@@ -34,7 +34,8 @@ class ExpenseListItem extends StatelessWidget {
           Expanded(
             child: SizedBox(
               height: 100,
-              child: MainPageWidget(),
+              
+              child: MainPageWidget(onExpense ?? () {})
             ),
           ),
         ],
