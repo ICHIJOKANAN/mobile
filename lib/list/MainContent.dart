@@ -71,7 +71,7 @@ class _MainContentState extends State<MainContent> {
               ],
             ),
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 16),
           // 情報確認ボタン
           Expanded(
             flex: 1,
@@ -92,7 +92,7 @@ class _MainContentState extends State<MainContent> {
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all<Color>(Colors.purple),
                     foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-                    minimumSize: WidgetStateProperty.all<Size>(const Size.fromHeight(56)),
+                    minimumSize: WidgetStateProperty.all<Size>(const Size(200, 60)),
                     textStyle: WidgetStateProperty.all<TextStyle>(
                       const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
@@ -113,7 +113,7 @@ class _MainContentState extends State<MainContent> {
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all<Color>(Colors.teal),
                     foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-                    minimumSize: WidgetStateProperty.all<Size>(const Size.fromHeight(56)),
+                    minimumSize: WidgetStateProperty.all<Size>(const Size(200, 60)),
                     textStyle: WidgetStateProperty.all<TextStyle>(
                       const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
