@@ -76,7 +76,7 @@ class ChartPage extends StatelessWidget {
                         const Text('収支割合', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 16),
                         SizedBox(
-                          height: 200,
+                          height: 180,
                           child: PieChart(//円グラフ表示
                             PieChartData(
                               sectionsSpace: 4,
