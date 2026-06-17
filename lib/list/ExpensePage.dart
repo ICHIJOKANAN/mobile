@@ -49,24 +49,27 @@ class _ExpensePageState extends State<ExpensePage> {
         ボタン
         */
         child: Column(
-          children: [
-            //入力欄
-            TextField(
-              //TextFieldとControllerを接続、これで入力値を取得
-              controller: moneyController,
-              //数字キーボードにする
-              keyboardType: TextInputType.number,
+    children: [
 
-              decoration: const InputDecoration(
-                labelText: "金額",
-                border: OutlineInputBorder(),
-              ),
+      //入力欄
+      Center(
+        child: SizedBox(
+          width: 200, // ← 横幅を変更
+          child: TextField(
+            controller: moneyController,
+            keyboardType: TextInputType.number,
+            decoration: const InputDecoration(
+              labelText: "金額",
+              border: OutlineInputBorder(),
             ),
+          ),
+        ),
+      ),
 
+      const SizedBox(height: 20),
 
-            //高さ20pxの余白を入れる
-            const SizedBox(height: 20),
-
+      //ここにプルダウンやボタンが続く
+    
 
             //プルダウン形式の入力フォームを作成
             DropdownButtonFormField<String>(
