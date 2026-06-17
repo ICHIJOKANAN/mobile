@@ -28,35 +28,46 @@ class _IncomePageState extends State<IncomePage> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(
-              controller: moneyController,
-              keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: '金額',
-                border: OutlineInputBorder(),
-              ),
-            ),
+           Center(
+  child: SizedBox(
+    width: 300, // ← 好きな横幅
+    child: TextField(
+      controller: moneyController,
+      keyboardType: TextInputType.number,
+      decoration: const InputDecoration(
+        labelText: '金額',
+        border: OutlineInputBorder(),
+      ),
+    ),
+  ),
+),
             const SizedBox(height: 20),
-            DropdownButtonFormField<String>(
-              initialValue: selectedCategory,
-              decoration: const InputDecoration(
-                labelText: 'カテゴリ',
-                border: OutlineInputBorder(),
-              ),
-              items: categories
-                  .map((category) => DropdownMenuItem(
-                        value: category,
-                        child: Text(category),
-                      ))
-                  .toList(),
-              onChanged: (value) {
-                if (value != null) {
-                  setState(() {
-                    selectedCategory = value;
-                  });
-                }
-              },
-            ),
+
+            Center(
+  child: SizedBox(
+    width: 300, // ← 好きな横幅
+    child: DropdownButtonFormField<String>(
+      initialValue: selectedCategory,
+      decoration: const InputDecoration(
+        labelText: 'カテゴリ',
+        border: OutlineInputBorder(),
+      ),
+      items: categories
+          .map((category) => DropdownMenuItem(
+                value: category,
+                child: Text(category),
+              ))
+          .toList(),
+      onChanged: (value) {
+        if (value != null) {
+          setState(() {
+            selectedCategory = value;
+          });
+        }
+      },
+    ),
+  ),
+),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () async {
