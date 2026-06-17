@@ -54,7 +54,7 @@ class _ExpensePageState extends State<ExpensePage> {
       //入力欄
       Center(
         child: SizedBox(
-          width: 200, // ← 横幅を変更
+          width: 300, // ← 横幅を変更
           child: TextField(
             controller: moneyController,
             keyboardType: TextInputType.number,
@@ -71,8 +71,13 @@ class _ExpensePageState extends State<ExpensePage> {
       //ここにプルダウンやボタンが続く
     
 
+    
+    
+    Center(
+             child: SizedBox(
+             width: 300, // ← 好きな横幅
             //プルダウン形式の入力フォームを作成
-            DropdownButtonFormField<String>(
+            child: DropdownButtonFormField<String>(
 
               /*現在選択されている値
               selectedCategoryに入ってる値が表示される*/
@@ -85,6 +90,7 @@ class _ExpensePageState extends State<ExpensePage> {
                 //枠線
                 border: OutlineInputBorder(),
               ),
+            
               items: categories//プルダウンの選択肢一覧を作成
               /*categoriesの中身を一つずつ取り出して、
               DropdownMenuItemに変換する*/
@@ -104,7 +110,11 @@ class _ExpensePageState extends State<ExpensePage> {
                 }
               },
             ),
+    
 
+
+          ),
+    ),
             const SizedBox(height: 20),
 
             ElevatedButton(
