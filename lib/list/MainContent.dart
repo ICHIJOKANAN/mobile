@@ -71,7 +71,7 @@ class _MainContentState extends State<MainContent> {
               ],
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 32),
           // 情報確認ボタン
           Expanded(
             flex: 1,
@@ -87,18 +87,18 @@ class _MainContentState extends State<MainContent> {
                       ),
                     );
                   },
-                  //icon: const Icon(Icons.pie_chart),
+                  icon: const Icon(Icons.pie_chart),
                   label: const Text('合計・グラフを見る'),
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all<Color>(Colors.purple),
                     foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-                    fixedSize: WidgetStateProperty.all<Size>(const Size(200, 60),),
+                    minimumSize: WidgetStateProperty.all<Size>(const Size.fromHeight(56)),
                     textStyle: WidgetStateProperty.all<TextStyle>(
                       const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
                 ElevatedButton.icon(
                   onPressed: () {
                     Navigator.push(
@@ -108,12 +108,12 @@ class _MainContentState extends State<MainContent> {
                       ),
                     );
                   },
-                  //icon: const Icon(Icons.list),
+                  icon: const Icon(Icons.list),
                   label: const Text('詳細な記録を見る'),
                   style: ButtonStyle(
                     backgroundColor: WidgetStateProperty.all<Color>(Colors.teal),
                     foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
-                    fixedSize: WidgetStateProperty.all<Size>(const Size(200, 60),),
+                    minimumSize: WidgetStateProperty.all<Size>(const Size.fromHeight(56)),
                     textStyle: WidgetStateProperty.all<TextStyle>(
                       const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
