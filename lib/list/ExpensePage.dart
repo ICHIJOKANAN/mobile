@@ -49,7 +49,8 @@ class _ExpensePageState extends State<ExpensePage> {
         ボタン
         */
         child: Column(
-    children: [
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
 
       //入力欄
       Center(

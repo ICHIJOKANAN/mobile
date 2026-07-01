@@ -27,6 +27,7 @@ class _IncomePageState extends State<IncomePage> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
            Center(
   child: SizedBox(
