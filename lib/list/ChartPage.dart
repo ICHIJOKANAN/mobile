@@ -46,9 +46,10 @@ class ChartPage extends StatelessWidget {
 
           return Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
                 Card(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -113,6 +114,7 @@ class ChartPage extends StatelessWidget {
                   ),
                 ),
               ],
+              ),
             ),
           );
         },
