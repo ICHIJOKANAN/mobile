@@ -26,81 +26,93 @@ class _IncomePageState extends State<IncomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-           Center(
-  child: SizedBox(
-    width: 300, // ← 好きな横幅
-    child: TextField(
-      controller: moneyController,
-      keyboardType: TextInputType.number,
-      decoration: const InputDecoration(
-        labelText: '金額',
-        border: OutlineInputBorder(),
-      ),
-    ),
-  ),
-),
-            const SizedBox(height: 20),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SizedBox(height: 8),
+                SizedBox(
+                  width: 300,
+                  child: TextField(
+                    controller: moneyController,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      labelText: '金額',
+                      hintText: '例: 1200',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: 300,
+                  child: DropdownButtonFormField<String>(
+                    initialValue: selectedCategory,
+                    decoration: const InputDecoration(
+                      labelText: 'カテゴリ',
+                      border: OutlineInputBorder(),
+                    ),
+                    items: categories
+                        .map((category) => DropdownMenuItem(
+                              value: category,
+                              child: Text(category),
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      if (value != null) {
+                        setState(() {
+                          selectedCategory = value;
+                        });
+                      }
+                    },
+                  ),
+                ),
+                const SizedBox(height: 20),
+                SizedBox(
+                  width: 300,
+                  height: 60,
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      final amount = int.tryParse(moneyController.text);
+                      if (amount == null || amount <= 0) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('正しい金額を入力してください')),
+                        );
+                        return;
+                      }
 
-            Center(
-  child: SizedBox(
-    width: 300, // ← 好きな横幅
-    child: DropdownButtonFormField<String>(
-      initialValue: selectedCategory,
-      decoration: const InputDecoration(
-        labelText: 'カテゴリ',
-        border: OutlineInputBorder(),
-      ),
-      items: categories
-          .map((category) => DropdownMenuItem(
-                value: category,
-                child: Text(category),
-              ))
-          .toList(),
-      onChanged: (value) {
-        if (value != null) {
-          setState(() {
-            selectedCategory = value;
-          });
-        }
-      },
-    ),
-  ),
-),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                final amount = int.tryParse(moneyController.text);
-                if (amount == null || amount <= 0) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('正しい金額を入力してください')),
-                  );
-                  return;
-                }
+                      final record = Record(
+                        amount: amount,
+                        category: selectedCategory,
+                        type: 'income',
+                        date: DateTime.now(),
+                      );
+                      final navigator = Navigator.of(context);
 
-                final record = Record(
-                  amount: amount,
-                  category: selectedCategory,
-                  type: 'income',
-                  date: DateTime.now(),
-                );
-                final messenger = ScaffoldMessenger.of(context);
-                final navigator = Navigator.of(context);
+                      await DatabaseHelper.instance.insertRecord(record);
+                      if (!mounted) return;
 
-                await DatabaseHelper.instance.insertRecord(record);
-                if (!mounted) return;
-
-                messenger.showSnackBar(
-                  const SnackBar(content: Text('収入を保存しました')),
-                );
-
-                navigator.pop();
-              },
-              child: const Text('登録'),
+                      navigator.pop('income_saved');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white,
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    child: const Text('登録'),
+                  ),
+                ),
+                const SizedBox(height: 8),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
